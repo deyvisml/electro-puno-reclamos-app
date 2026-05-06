@@ -52,7 +52,10 @@ const Login = () => {
             behavior="padding"
             className="flex-1 justify-center bg-white border border-red-500"
         >
-            <ScrollView contentContainerClassName="p-6 flex-grow justify-center">
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerClassName="p-6 flex-grow justify-center"
+            >
                 <View>
                     <Image
                         source={ElectroPunoLogo}
