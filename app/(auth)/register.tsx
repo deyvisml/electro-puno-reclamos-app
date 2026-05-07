@@ -66,13 +66,10 @@ const Register = () => {
     };
 
     return (
-        <KeyboardAvoidingView
-            behavior="padding"
-            className="flex-1 justify-center bg-white border border-red-500"
-        >
+        <KeyboardAvoidingView behavior="padding" className="flex-1">
             <ScrollView
                 showsVerticalScrollIndicator={false}
-                contentContainerClassName="p-6 flex-grow justify-center"
+                contentContainerClassName="p-3 bg-white flex-grow justify-center"
             >
                 <View>
                     <Image
@@ -102,7 +99,7 @@ const Register = () => {
                                     }) => (
                                         <TextInput
                                             placeholder="Nombres"
-                                            className="p-3 border border-slate-300 rounded-lg"
+                                            className="p-4 border border-slate-300 rounded-lg"
                                             onBlur={onBlur}
                                             onChangeText={(text) => {
                                                 clearErrors("name");
@@ -130,7 +127,7 @@ const Register = () => {
                                     }) => (
                                         <TextInput
                                             placeholder="Apellidos"
-                                            className="p-3 border border-slate-300 rounded-lg"
+                                            className="p-4 border border-slate-300 rounded-lg"
                                             onBlur={onBlur}
                                             onChangeText={(text) => {
                                                 clearErrors("lastName");
@@ -156,7 +153,7 @@ const Register = () => {
                                     }) => (
                                         <TextInput
                                             placeholder="DNI"
-                                            className="p-3 border border-slate-300 rounded-lg"
+                                            className="p-4 border border-slate-300 rounded-lg"
                                             keyboardType="numeric"
                                             maxLength={8}
                                             onBlur={onBlur}
@@ -186,7 +183,7 @@ const Register = () => {
                                     }) => (
                                         <TextInput
                                             placeholder="Número de teléfono"
-                                            className="p-3 border border-slate-300 rounded-lg"
+                                            className="p-4 border border-slate-300 rounded-lg"
                                             keyboardType="numeric"
                                             maxLength={9}
                                             onBlur={onBlur}
@@ -223,7 +220,7 @@ const Register = () => {
                                     }) => (
                                         <TextInput
                                             placeholder="Correo electrónico"
-                                            className="p-3 border border-slate-300 rounded-lg"
+                                            className="p-4 border border-slate-300 rounded-lg"
                                             onBlur={onBlur}
                                             onChangeText={(text) => {
                                                 clearErrors("email");
@@ -252,7 +249,7 @@ const Register = () => {
                                         <TextInput
                                             placeholder="Contraseña"
                                             secureTextEntry
-                                            className="p-3 border border-slate-300 rounded-lg"
+                                            className="p-4 border border-slate-300 rounded-lg"
                                             onBlur={onBlur}
                                             onChangeText={(text) => {
                                                 clearErrors("password");

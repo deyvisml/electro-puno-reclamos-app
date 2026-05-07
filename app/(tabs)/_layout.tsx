@@ -1,4 +1,9 @@
-import { Entypo, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+    Entypo,
+    Feather,
+    FontAwesome6,
+    MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 import { Image } from "expo-image";
 import { Tabs } from "expo-router";
@@ -39,16 +44,34 @@ const TabLayout = () => {
             />
 
             <Tabs.Screen
+                name="requests/[id]"
+                options={{
+                    href: null,
+                }}
+            />
+
+            <Tabs.Screen
                 name="create-request"
                 options={{
                     title: "Crear Reclamo",
-                    tabBarIcon: () => (
-                        <View className="justify-center items-center bg-red-700 border border-red-500">
-                            <View className="-top-16 absolute justify-center items-center bg-amber-500 border-4 border-gray-200 rounded-full w-20 h-20">
-                                <Entypo name="plus" size={40} color="white" />
+                    tabBarIcon: ({ color, size, focused }) =>
+                        focused ? (
+                            <FontAwesome6
+                                name="circle-plus"
+                                size={size}
+                                color={color}
+                            />
+                        ) : (
+                            <View className="justify-center items-center">
+                                <View className="-top-16 absolute justify-center items-center bg-amber-500 border-4 border-gray-200 rounded-full w-20 h-20">
+                                    <Entypo
+                                        name="plus"
+                                        size={40}
+                                        color="white"
+                                    />
+                                </View>
                             </View>
-                        </View>
-                    ),
+                        ),
                 }}
             />
 

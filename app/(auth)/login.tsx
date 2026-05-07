@@ -48,13 +48,10 @@ const Login = () => {
     };
 
     return (
-        <KeyboardAvoidingView
-            behavior="padding"
-            className="flex-1 justify-center bg-white border border-red-500"
-        >
+        <KeyboardAvoidingView behavior="padding" className="flex-1">
             <ScrollView
                 showsVerticalScrollIndicator={false}
-                contentContainerClassName="p-6 flex-grow justify-center"
+                contentContainerClassName="p-3 flex-grow bg-white justify-center"
             >
                 <View>
                     <Image
@@ -83,7 +80,7 @@ const Login = () => {
                                 }) => (
                                     <TextInput
                                         placeholder="Correo electrónico"
-                                        className="p-3 border border-slate-300 rounded-lg"
+                                        className="p-4 border border-slate-300 rounded-lg"
                                         onBlur={onBlur}
                                         onChangeText={(text) => {
                                             clearErrors("email");
@@ -110,7 +107,7 @@ const Login = () => {
                                     <TextInput
                                         placeholder="Contraseña"
                                         secureTextEntry
-                                        className="p-3 border border-slate-300 rounded-lg"
+                                        className="p-4 border border-slate-300 rounded-lg"
                                         onBlur={onBlur}
                                         onChangeText={(text) => {
                                             clearErrors("password");
@@ -137,7 +134,7 @@ const Login = () => {
 
                     <Pressable
                         onPress={handleSubmit(onSubmit)}
-                        className="bg-amber-500 mt-6 p-3 rounded-lg"
+                        className="bg-amber-500 mt-6 p-4 rounded-lg"
                     >
                         <Text className="font-bold text-white text-center uppercase">
                             Ingresar
