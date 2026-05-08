@@ -124,7 +124,7 @@ const ImagePickerField = ({
                     </View>
 
                     {/* Contador */}
-                    <Text className="mt-1.5 text-slate-500 text-sm">
+                    <Text className="mt-1 text-slate-500 text-sm">
                         {value.length}/{maxImages} fotos seleccionadas
                     </Text>
                 </View>

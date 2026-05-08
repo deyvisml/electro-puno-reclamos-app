@@ -1,3 +1,4 @@
+import FormField from "@/components/FormField";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
@@ -89,8 +90,7 @@ const Register = () => {
                         <Text className="font-light text-xl">Perfil</Text>
 
                         <View className="gap-4">
-                            <View className="gap-2">
-                                <Text className="font-semibold">Nombres *</Text>
+                            <FormField label="Nombres" required>
                                 <Controller
                                     control={control}
                                     name="name"
@@ -114,11 +114,9 @@ const Register = () => {
                                         {errors.name.message}
                                     </Text>
                                 )}
-                            </View>
-                            <View className="gap-2">
-                                <Text className="font-semibold">
-                                    Apellidos *
-                                </Text>
+                            </FormField>
+
+                            <FormField label="Apellidos" required>
                                 <Controller
                                     control={control}
                                     name="lastName"
@@ -142,9 +140,9 @@ const Register = () => {
                                         {errors.lastName.message}
                                     </Text>
                                 )}
-                            </View>
-                            <View className="gap-2">
-                                <Text className="font-semibold">DNI *</Text>
+                            </FormField>
+
+                            <FormField label="DNI" required>
                                 <Controller
                                     control={control}
                                     name="dni"
@@ -170,11 +168,9 @@ const Register = () => {
                                         {errors.dni.message}
                                     </Text>
                                 )}
-                            </View>
-                            <View className="gap-2">
-                                <Text className="font-semibold">
-                                    Nº de teléfono *
-                                </Text>
+                            </FormField>
+
+                            <FormField label="Nº de teléfono" required>
                                 <Controller
                                     control={control}
                                     name="phoneNumber"
@@ -200,7 +196,7 @@ const Register = () => {
                                         {errors.phoneNumber.message}
                                     </Text>
                                 )}
-                            </View>
+                            </FormField>
                         </View>
                     </View>
 
@@ -208,10 +204,7 @@ const Register = () => {
                         <Text className="font-light text-xl">Credenciales</Text>
 
                         <View className="gap-4">
-                            <View className="gap-2">
-                                <Text className="font-semibold">
-                                    Correo electrónico *
-                                </Text>
+                            <FormField label="Correo electrónico" required>
                                 <Controller
                                     control={control}
                                     name="email"
@@ -235,11 +228,9 @@ const Register = () => {
                                         {errors.email.message}
                                     </Text>
                                 )}
-                            </View>
-                            <View className="gap-2">
-                                <Text className="font-semibold">
-                                    Contraseña *
-                                </Text>
+                            </FormField>
+
+                            <FormField label="Contraseña" required>
                                 <Controller
                                     control={control}
                                     name="password"
@@ -264,13 +255,13 @@ const Register = () => {
                                         {errors.password.message}
                                     </Text>
                                 )}
-                            </View>
+                            </FormField>
                         </View>
                     </View>
 
                     <Pressable
                         onPress={handleSubmit(onSubmit)}
-                        className="bg-amber-500 mt-6 p-3 rounded-lg"
+                        className="bg-amber-500 mt-6 p-4 rounded-lg"
                     >
                         <Text className="font-bold text-white text-center uppercase">
                             Registrarse

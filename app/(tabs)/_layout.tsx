@@ -44,13 +44,6 @@ const TabLayout = () => {
             />
 
             <Tabs.Screen
-                name="requests/[id]"
-                options={{
-                    href: null,
-                }}
-            />
-
-            <Tabs.Screen
                 name="create-request"
                 options={{
                     title: "Crear Reclamo",

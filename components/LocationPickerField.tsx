@@ -138,8 +138,12 @@ const LocationPickerField = ({ value, onChange }: Props) => {
             {value && (
                 <View className="gap-4 bg-white p-4 border border-slate-300 rounded-2xl">
                     <View className="flex-row items-start">
-                        <View className="justify-center items-center bg-red-100 mr-3 rounded-full w-10 h-10">
-                            <Ionicons name="location" size={20} color="red" />
+                        <View className="justify-center items-center bg-amber-100 mr-3 rounded-full w-10 h-10">
+                            <Ionicons
+                                name="location"
+                                size={20}
+                                color="#f59e0b"
+                            />
                         </View>
 
                         <View className="flex-1">
@@ -147,8 +151,40 @@ const LocationPickerField = ({ value, onChange }: Props) => {
                                 Ubicación seleccionada
                             </Text>
 
-                            <Text className="mt-1 text-slate-500 text-sm">
+                            <Text
+                                numberOfLines={2}
+                                className="mt-1 text-slate-500 text-sm"
+                            >
                                 {value.address}
+                            </Text>
+                        </View>
+                    </View>
+
+                    {/* LAT / LNG */}
+                    <View className="flex-row gap-2">
+                        <View className="flex-1 bg-slate-50 px-3 py-2 rounded-lg">
+                            <Text className="text-[10px] text-slate-400 uppercase">
+                                Latitud
+                            </Text>
+
+                            <Text
+                                numberOfLines={1}
+                                className="text-slate-700 text-xs"
+                            >
+                                {value.latitude}
+                            </Text>
+                        </View>
+
+                        <View className="flex-1 bg-slate-50 px-3 py-2 rounded-lg">
+                            <Text className="text-[10px] text-slate-400 uppercase">
+                                Longitud
+                            </Text>
+
+                            <Text
+                                numberOfLines={1}
+                                className="text-slate-700 text-xs"
+                            >
+                                {value.longitude}
                             </Text>
                         </View>
                     </View>
@@ -207,14 +243,44 @@ const LocationPickerField = ({ value, onChange }: Props) => {
 
                         {selectedLocation && (
                             <View className="gap-3">
-                                <View>
-                                    <Text className="font-semibold text-slate-800">
-                                        Ubicación seleccionada
-                                    </Text>
+                                <View className="gap-3">
+                                    <View>
+                                        <Text className="font-semibold text-slate-800">
+                                            Ubicación seleccionada
+                                        </Text>
 
-                                    <Text className="mt-1 text-slate-600">
-                                        {selectedLocation.address}
-                                    </Text>
+                                        <Text className="mt-1 text-slate-600">
+                                            {selectedLocation.address}
+                                        </Text>
+                                    </View>
+
+                                    <View className="flex-row gap-2">
+                                        <View className="flex-1 bg-slate-50 px-3 py-2 rounded-lg">
+                                            <Text className="text-[10px] text-slate-400 uppercase">
+                                                Latitud
+                                            </Text>
+
+                                            <Text
+                                                numberOfLines={1}
+                                                className="text-slate-700 text-xs"
+                                            >
+                                                {selectedLocation.latitude}
+                                            </Text>
+                                        </View>
+
+                                        <View className="flex-1 bg-slate-50 px-3 py-2 rounded-lg">
+                                            <Text className="text-[10px] text-slate-400 uppercase">
+                                                Longitud
+                                            </Text>
+
+                                            <Text
+                                                numberOfLines={1}
+                                                className="text-slate-700 text-xs"
+                                            >
+                                                {selectedLocation.longitude}
+                                            </Text>
+                                        </View>
+                                    </View>
                                 </View>
 
                                 <Pressable

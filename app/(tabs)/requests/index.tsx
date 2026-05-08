@@ -1,3 +1,4 @@
+import PageHeader from "@/components/PageHeader ";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
@@ -15,7 +16,8 @@ const DATA = [
 const Requests = () => {
     return (
         <View className="flex-1 bg-white p-3">
-            <Text className="font-bold text-3xl">Reclamos</Text>
+            {/* Header */}
+            <PageHeader title="Reclamos" />
             <Link href="/login">Login</Link>
 
             <View className="flex-row flex-wrap gap-1 mt-4">

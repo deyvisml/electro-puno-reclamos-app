@@ -1,7 +1,9 @@
+import FormField from "@/components/FormField";
 import ImagePickerField from "@/components/ImagePickerField ";
 import LocationPickerField, {
     LocationValue,
 } from "@/components/LocationPickerField";
+import PageHeader from "@/components/PageHeader ";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Picker } from "@react-native-picker/picker";
 import { ImagePickerAsset } from "expo-image-picker";
@@ -19,7 +21,7 @@ import { z } from "zod";
 
 const newRequestSchema = z.object({
     requestType: z.string().min(1, "El tipo de reclamo es requerido"),
-    meterId: z.string().min(1, "El suministro es requerido"),
+    meterNumber: z.string().min(1, "El suministro es requerido"),
     description: z
         .string()
         .min(10, "La descripción debe tener al menos 10 caracteres")
@@ -58,14 +60,11 @@ const CreateRequest = () => {
                 showsVerticalScrollIndicator={false}
                 contentContainerClassName="p-3 bg-white flex-grow "
             >
-                <Text className="font-bold text-3xl">Nuevo Reclamo</Text>
+                {/* Header */}
+                <PageHeader title="Nuevo Reclamo" />
 
                 <View className="gap-4 mt-6">
-                    <View className="gap-2">
-                        <Text className="font-semibold uppercase">
-                            Tipo de Reclamo *
-                        </Text>
-
+                    <FormField label="Tipo de Reclamo" required>
                         <Controller
                             control={control}
                             name="requestType"
@@ -106,57 +105,38 @@ const CreateRequest = () => {
                                 {errors.requestType.message}
                             </Text>
                         )}
-                    </View>
+                    </FormField>
 
-                    <View className="gap-2">
-                        <Text className="font-semibold uppercase">
-                            Suministro *
-                        </Text>
-
+                    <FormField label="Suministro" required>
                         <Controller
                             control={control}
-                            name="meterId"
+                            name="meterNumber"
                             rules={{ required: true }}
-                            render={({ field: { onChange, value } }) => (
-                                <View className="border border-slate-300 rounded-lg">
-                                    <Picker
-                                        selectedValue={value}
-                                        onValueChange={(itemValue) =>
-                                            onChange(itemValue)
-                                        }
-                                    >
-                                        <Picker.Item
-                                            label="Seleccione una opción"
-                                            value=""
-                                        />
-
-                                        <Picker.Item
-                                            label="Suministro 12345"
-                                            value="12345"
-                                        />
-                                        <Picker.Item
-                                            label="Suministro 67890"
-                                            value="67890"
-                                        />
-                                        <Picker.Item
-                                            label="Suministro 54321"
-                                            value="54321"
-                                        />
-                                    </Picker>
-                                </View>
+                            render={({
+                                field: { onBlur, onChange, value },
+                            }) => (
+                                <TextInput
+                                    keyboardType="numeric"
+                                    maxLength={20}
+                                    placeholder="Número de suministro"
+                                    className="px-4 py-4 border border-slate-300 rounded-lg"
+                                    onBlur={onBlur}
+                                    onChangeText={(text) => {
+                                        clearErrors("meterNumber");
+                                        onChange(text);
+                                    }}
+                                    value={value}
+                                />
                             )}
                         />
-                        {errors.meterId && (
+                        {errors.meterNumber && (
                             <Text className="text-red-500">
-                                {errors.meterId.message}
+                                {errors.meterNumber.message}
                             </Text>
                         )}
-                    </View>
+                    </FormField>
 
-                    <View className="gap-2">
-                        <Text className="font-semibold uppercase">
-                            Descripción del Reclamo *
-                        </Text>
+                    <FormField label="Descripción del Reclamo" required>
                         <Controller
                             control={control}
                             name="description"
@@ -183,33 +163,26 @@ const CreateRequest = () => {
                                 {errors.description.message}
                             </Text>
                         )}
-                    </View>
+                    </FormField>
 
                     {/* IMAGE PICKER */}
-                    <View className="gap-2">
-                        <Text className="font-semibold uppercase">Fotos</Text>
+                    <FormField label="Fotos">
                         <ImagePickerField
                             value={images}
                             onChange={setImages}
                             maxImages={3}
                         />
-                    </View>
+                    </FormField>
 
                     {/* LOCATION PICKER */}
-                    <View className="gap-2">
-                        <Text className="font-semibold uppercase">
-                            Ubicación *
-                        </Text>
+                    <FormField label="Ubicación" required>
                         <LocationPickerField
                             value={location}
                             onChange={setLocation}
                         />
-                    </View>
+                    </FormField>
 
-                    <View className="gap-2">
-                        <Text className="font-semibold uppercase">
-                            Referencia *
-                        </Text>
+                    <FormField label="Referencia" required>
                         <Controller
                             control={control}
                             name="locationReference"
@@ -217,7 +190,7 @@ const CreateRequest = () => {
                                 field: { onChange, onBlur, value },
                             }) => (
                                 <TextInput
-                                    placeholder="Refencia de ubicación"
+                                    placeholder="Referencia de ubicación"
                                     className="px-4 py-4 border border-slate-300 rounded-lg"
                                     onBlur={onBlur}
                                     onChangeText={(text) => {
@@ -233,7 +206,7 @@ const CreateRequest = () => {
                                 {errors.locationReference.message}
                             </Text>
                         )}
-                    </View>
+                    </FormField>
                 </View>
 
                 <Pressable

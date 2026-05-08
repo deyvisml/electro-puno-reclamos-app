@@ -10,6 +10,7 @@ import {
     View,
 } from "react-native";
 
+import FormField from "@/components/FormField";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -68,10 +69,7 @@ const Login = () => {
                     <Text className="font-medium text-2xl">Iniciar Sesión</Text>
 
                     <View className="gap-4 mt-4">
-                        <View className="gap-2">
-                            <Text className="font-semibold">
-                                Correo electrónico
-                            </Text>
+                        <FormField label="Correo electrónico">
                             <Controller
                                 control={control}
                                 name="email"
@@ -95,9 +93,9 @@ const Login = () => {
                                     {errors.email.message}
                                 </Text>
                             )}
-                        </View>
-                        <View className="gap-2">
-                            <Text className="font-semibold">Contraseña</Text>
+                        </FormField>
+
+                        <FormField label="Contraseña">
                             <Controller
                                 control={control}
                                 name="password"
@@ -122,7 +120,7 @@ const Login = () => {
                                     {errors.password.message}
                                 </Text>
                             )}
-                        </View>
+                        </FormField>
                     </View>
 
                     <Link
