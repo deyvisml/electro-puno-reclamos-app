@@ -1,10 +1,13 @@
+import ActionButton from "@/components/ActionButton";
 import FormField from "@/components/FormField";
 import ImageGalleryField from "@/components/ImageGalleryField";
 import LocationViewerField from "@/components/LocationViewerField";
 import PageHeader from "@/components/PageHeader ";
 import ReadOnlyTextField from "@/components/ReadOnlyTextField";
 import RequestStatus from "@/components/RequestStatus";
-import { MaterialIcons } from "@expo/vector-icons";
+import VisitConfirmationButton from "@/components/VisitConfirmationButton";
+import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 
@@ -50,10 +53,7 @@ const Request = () => {
                 />
             </View>
 
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                contentContainerClassName=" flex-grow"
-            >
+            <ScrollView contentContainerClassName="flex-grow">
                 <View>
                     <RequestStatus status="Pendiente" statusId="0" />
 
@@ -90,33 +90,95 @@ const Request = () => {
                         <View className="mt-4">
                             {/* 00. Details */}
                             {selectedMenuOption === "0" && (
-                                <View className="gap-4">
-                                    <FormField label="Tipo de Reclamo">
-                                        <ReadOnlyTextField value="Reconexión" />
-                                    </FormField>
+                                <>
+                                    <View className="gap-4">
+                                        <FormField label="Tipo de Reclamo">
+                                            <ReadOnlyTextField value="Reconexión" />
+                                        </FormField>
 
-                                    <FormField label="Suministro">
-                                        <ReadOnlyTextField value="654321" />
-                                    </FormField>
+                                        <FormField label="Suministro">
+                                            <ReadOnlyTextField value="654321" />
+                                        </FormField>
 
-                                    <FormField label="Descripción">
-                                        <ReadOnlyTextField value="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, perferendis. Facere cumque culpa laboriosam eveniet placeat ipsum eaque minus ut, suscipit nemo dolor sit unde obcaecati, quidem repudiandae vitae! Numquam expedita autem inventore nisi magnam commodi quas laudantium atque adipisci?" />
-                                    </FormField>
+                                        <FormField label="Descripción">
+                                            <ReadOnlyTextField value="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, perferendis. Facere cumque culpa laboriosam eveniet placeat ipsum eaque minus ut, suscipit nemo dolor sit unde obcaecati, quidem repudiandae vitae! Numquam expedita autem inventore nisi magnam commodi quas laudantium atque adipisci?" />
+                                        </FormField>
 
-                                    <FormField label="Fotos">
-                                        <ImageGalleryField
-                                            images={[
-                                                "https://www.adobe.com/acrobat/hub/media_173d13651460eb7e12c0ef4cf8410e0960a20f0ee.jpg",
-                                                "https://image.cnbcfm.com/api/v1/image/107192893-1676056282124-happy-black-man-freelancer-working-from-home-2022-12-16-08-24-33-utc.jpg",
-                                            ]}
+                                        <FormField label="Fotos">
+                                            <ImageGalleryField
+                                                images={[
+                                                    "https://www.adobe.com/acrobat/hub/media_173d13651460eb7e12c0ef4cf8410e0960a20f0ee.jpg",
+                                                    "https://image.cnbcfm.com/api/v1/image/107192893-1676056282124-happy-black-man-freelancer-working-from-home-2022-12-16-08-24-33-utc.jpg",
+                                                ]}
+                                            />
+                                        </FormField>
+                                    </View>
+
+                                    <View className="gap-4 mt-10 mb-16">
+                                        <ActionButton
+                                            label="Eliminar reclamo"
+                                            onPress={() => {
+                                                alert("Eliminar reclamo");
+                                            }}
+                                            className="bg-red-500"
+                                            icon={
+                                                <Feather
+                                                    name="trash-2"
+                                                    size={24}
+                                                    color="white"
+                                                />
+                                            }
                                         />
-                                    </FormField>
-                                </View>
+
+                                        <ActionButton
+                                            label="Asignarme reclamo"
+                                            onPress={() => {
+                                                alert("Asignar reclamo");
+                                            }}
+                                            className="bg-blue-400"
+                                        />
+
+                                        <ActionButton
+                                            label="Devolver a pendiente"
+                                            onPress={() => {
+                                                alert("Devolver a pendiente");
+                                            }}
+                                            className="bg-white border border-slate-300"
+                                            textClassName="text-black"
+                                            iconPosition="left"
+                                            icon={
+                                                <Ionicons
+                                                    name="return-up-back"
+                                                    size={24}
+                                                    color="black"
+                                                />
+                                            }
+                                        />
+                                        <ActionButton
+                                            label="Trabajar reclamo"
+                                            onPress={() => {
+                                                alert("Trabajar reclamo");
+                                            }}
+                                            className="bg-blue-400"
+                                        />
+
+                                        <ActionButton
+                                            label="Completar reclamo"
+                                            onPress={() => {
+                                                //alert("Completar reclamo");
+                                                router.push(
+                                                    "/(tabs)/requests/1/complete",
+                                                );
+                                            }}
+                                            className="bg-blue-400"
+                                        />
+                                    </View>
+                                </>
                             )}
 
                             {/* 01. Location */}
                             {selectedMenuOption === "1" && (
-                                <View className="gap-4">
+                                <View className="gap-4 mb-12">
                                     <FormField label="Ubicación">
                                         <LocationViewerField
                                             value={{
@@ -130,6 +192,22 @@ const Request = () => {
 
                                     <FormField label="Referencia">
                                         <ReadOnlyTextField value="Detras de la tienda" />
+                                    </FormField>
+
+                                    <FormField label="Visita técnica">
+                                        <VisitConfirmationButton
+                                            targetLocation={{
+                                                latitude: -15.8402,
+                                                longitude: -70.0219,
+                                                address:
+                                                    "Av. Simón Bolívar 123",
+                                            }}
+                                            radiusInMeters={100}
+                                            confirmed={false}
+                                            onConfirm={() => {
+                                                alert("Visita confirmada");
+                                            }}
+                                        />
                                     </FormField>
                                 </View>
                             )}

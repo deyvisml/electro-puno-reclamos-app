@@ -33,7 +33,7 @@ const ProfileOptionItem = ({
 
                 {/* LABEL */}
                 <Text
-                    className={`flex-1 text-lg ${
+                    className={`flex-1  ${
                         danger ? "text-red-500" : "text-slate-800"
                     }`}
                 >

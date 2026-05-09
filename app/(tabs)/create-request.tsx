@@ -1,3 +1,4 @@
+import ActionButton from "@/components/ActionButton";
 import FormField from "@/components/FormField";
 import ImagePickerField from "@/components/ImagePickerField ";
 import LocationPickerField, {
@@ -11,7 +12,6 @@ import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
     KeyboardAvoidingView,
-    Pressable,
     ScrollView,
     Text,
     TextInput,
@@ -209,14 +209,12 @@ const CreateRequest = () => {
                     </FormField>
                 </View>
 
-                <Pressable
-                    onPress={handleSubmit(onSubmit)}
-                    className="bg-amber-500 mt-10 mb-10 p-4 rounded-lg"
-                >
-                    <Text className="font-bold text-white text-center uppercase">
-                        Crear reclamo
-                    </Text>
-                </Pressable>
+                <View className="mt-10 mb-10 h-14">
+                    <ActionButton
+                        label="Crear reclamo"
+                        onPress={handleSubmit(onSubmit)}
+                    />
+                </View>
             </ScrollView>
         </KeyboardAvoidingView>
     );

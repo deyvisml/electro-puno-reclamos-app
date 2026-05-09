@@ -7,10 +7,15 @@ import {
     MaterialIcons,
     SimpleLineIcons,
 } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
 
 const Profile = () => {
+    const handleUpdateProfile = () => {
+        router.push("/profile/edit");
+    };
+
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
@@ -23,11 +28,9 @@ const Profile = () => {
                 <ProfileOptionItem
                     label="Actualizar Perfil"
                     icon={
-                        <FontAwesome6 name="user" size={26} color="#334155" />
+                        <FontAwesome6 name="user" size={24} color="#334155" />
                     }
-                    onPress={() => {
-                        alert("Actualizar Perfil");
-                    }}
+                    onPress={handleUpdateProfile}
                 />
 
                 <ProfileOptionItem
@@ -35,7 +38,7 @@ const Profile = () => {
                     icon={
                         <MaterialIcons
                             name="exit-to-app"
-                            size={26}
+                            size={24}
                             color="#334155"
                         />
                     }
@@ -56,7 +59,7 @@ const Profile = () => {
                         icon={
                             <MaterialCommunityIcons
                                 name="phone-outline"
-                                size={26}
+                                size={24}
                                 color="#334155"
                             />
                         }
@@ -68,7 +71,7 @@ const Profile = () => {
                         icon={
                             <SimpleLineIcons
                                 name="social-facebook"
-                                size={26}
+                                size={24}
                                 color="#334155"
                             />
                         }
@@ -80,7 +83,7 @@ const Profile = () => {
                         icon={
                             <MaterialIcons
                                 name="tiktok"
-                                size={26}
+                                size={24}
                                 color="#334155"
                             />
                         }
@@ -92,7 +95,7 @@ const Profile = () => {
                         icon={
                             <SimpleLineIcons
                                 name="map"
-                                size={26}
+                                size={24}
                                 color="#334155"
                             />
                         }

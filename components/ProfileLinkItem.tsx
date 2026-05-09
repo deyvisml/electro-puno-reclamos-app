@@ -40,10 +40,10 @@ const ProfileLinkItem = ({
         >
             <View className="flex-row items-center py-4">
                 {/* ICON */}
-                <View className="justify-center items-center w-12">{icon}</View>
+                <View className="justify-center w-12">{icon}</View>
 
                 {/* LABEL */}
-                <Text className="flex-1 text-slate-800 text-lg">{label}</Text>
+                <Text className="flex-1 text-slate-800">{label}</Text>
             </View>
         </Pressable>
     );

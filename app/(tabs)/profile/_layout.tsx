@@ -4,8 +4,7 @@ export default function RequestsLayout() {
     return (
         <Stack screenOptions={{ headerShown: false }}>
             <Stack.Screen name="index" />
-            <Stack.Screen name="[id]/index" />
-            <Stack.Screen name="[id]/complete" />
+            <Stack.Screen name="edit" />
         </Stack>
     );
 }

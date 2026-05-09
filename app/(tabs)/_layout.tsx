@@ -3,6 +3,7 @@ import {
     Feather,
     FontAwesome6,
     MaterialCommunityIcons,
+    MaterialIcons,
 } from "@expo/vector-icons";
 
 import { Image } from "expo-image";
@@ -65,6 +66,20 @@ const TabLayout = () => {
                                 </View>
                             </View>
                         ),
+                }}
+            />
+
+            <Tabs.Screen
+                name="technicians"
+                options={{
+                    title: "Técnicos",
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialIcons
+                            name="engineering"
+                            size={size}
+                            color={color}
+                        />
+                    ),
                 }}
             />
 
