@@ -10,6 +10,7 @@ import {
     View,
 } from "react-native";
 
+import FormField from "@/components/FormField";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -48,11 +49,11 @@ const Login = () => {
     };
 
     return (
-        <KeyboardAvoidingView
-            behavior="padding"
-            className="flex-1 justify-center bg-white border border-red-500"
-        >
-            <ScrollView contentContainerClassName="p-6 flex-grow justify-center">
+        <KeyboardAvoidingView behavior="padding" className="flex-1">
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerClassName="p-3 flex-grow bg-white justify-center"
+            >
                 <View>
                     <Image
                         source={ElectroPunoLogo}
@@ -68,10 +69,7 @@ const Login = () => {
                     <Text className="font-medium text-2xl">Iniciar Sesión</Text>
 
                     <View className="gap-4 mt-4">
-                        <View className="gap-2">
-                            <Text className="font-semibold">
-                                Correo electrónico
-                            </Text>
+                        <FormField label="Correo electrónico">
                             <Controller
                                 control={control}
                                 name="email"
@@ -80,7 +78,7 @@ const Login = () => {
                                 }) => (
                                     <TextInput
                                         placeholder="Correo electrónico"
-                                        className="p-3 border border-slate-300 rounded-lg"
+                                        className="p-4 border border-slate-300 rounded-lg"
                                         onBlur={onBlur}
                                         onChangeText={(text) => {
                                             clearErrors("email");
@@ -95,9 +93,9 @@ const Login = () => {
                                     {errors.email.message}
                                 </Text>
                             )}
-                        </View>
-                        <View className="gap-2">
-                            <Text className="font-semibold">Contraseña</Text>
+                        </FormField>
+
+                        <FormField label="Contraseña">
                             <Controller
                                 control={control}
                                 name="password"
@@ -107,7 +105,7 @@ const Login = () => {
                                     <TextInput
                                         placeholder="Contraseña"
                                         secureTextEntry
-                                        className="p-3 border border-slate-300 rounded-lg"
+                                        className="p-4 border border-slate-300 rounded-lg"
                                         onBlur={onBlur}
                                         onChangeText={(text) => {
                                             clearErrors("password");
@@ -122,7 +120,7 @@ const Login = () => {
                                     {errors.password.message}
                                 </Text>
                             )}
-                        </View>
+                        </FormField>
                     </View>
 
                     <Link
@@ -134,7 +132,7 @@ const Login = () => {
 
                     <Pressable
                         onPress={handleSubmit(onSubmit)}
-                        className="bg-amber-500 mt-6 p-3 rounded-lg"
+                        className="bg-amber-500 mt-6 p-4 rounded-lg"
                     >
                         <Text className="font-bold text-white text-center uppercase">
                             Ingresar
